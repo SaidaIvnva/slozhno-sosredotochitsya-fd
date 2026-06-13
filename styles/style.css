@@ -1,5 +1,341 @@
-/* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
-
 .page {
-  /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
+  font-family: 'IBM Plex Mono';
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: var(--text-color);
+  background-attachment: fixed;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  gap: 20px;
+}
+
+.decorated-zone {
+  position: relative;
+}
+
+.decorated-zone::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 25px;
+  height: 25px;
+  border-top: 1px solid var(--decor-color);
+  border-right: 1px solid var(--decor-color);
+}
+
+.decorated-zone::after {
+  content: '';
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 25px;
+  height: 25px;
+  border-bottom: 1px solid var(--decor-color);
+  border-left: 1px solid var(--decor-color);
+}
+
+.rec {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  display: var(--rec-display);
+  align-items: center;
+  gap: 10px;
+  font-family: 'IBM Plex mono';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25px;
+  color: var(--accent-color);
+  text-transform: uppercase;
+}
+
+.rec::after {
+  content: '';
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  box-shadow: 0 0 4px 2px var(--accent-color);
+}
+
+.header {
+  height: 100vh;
+  min-height: 668px;
+  padding: 20px;
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.header__theme-menu {
+  justify-self: end;
+  align-self: self-end;
+}
+
+.header__theme-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  list-style: none;
+}
+
+.header__theme-menu-button {
+  background: none;
+  border: none;
+  padding: 5px 10px;
+  font-family: 'IBM Plex Mono';
+  font-size: 18px;
+  color: var(--button-color);
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: lowercase;
+}
+
+.header__theme-menu-button:hover {
+  border: 1px solid var(--button-hover);
+  padding: 4px 9px;
+}
+
+.header__theme-menu-button:focus {
+  outline: none;
+}
+
+.header__theme-menu-button:focus-visible {
+  border-bottom: 1px solid var(--button-hover);
+}
+
+.header__theme-menu-button_active {
+  border: 1px solid var(--button-color);
+  padding: 4px 9px;
+  pointer-events: none;
+}
+
+@media (width > 992px) {
+  .header__theme-menu {
+    justify-self: center;
+    align-self: self-start;
+  }
+
+  .header__theme-menu-list {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    list-style: none;
+  }
+  }
+
+.header__title {
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  font-weight: bold;
+  color: var(--title-color);
+  text-shadow: 4px 4px 0 var(--accent-color);
+  line-height: 0.82;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (width > 576px) {
+  .header__title {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+    justify-content: start;
+    align-items: center;
+  }
+
+  .header__title-line1,
+  .header__title-line2 {
+    display: inline;
+  }
+
+  .header__title-line2::before {
+    content: " ";
+  }
+}
+
+.title-decor {
+  background-color: var(--accent-color);
+  color: var(--title-text-color);
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.5;
+  padding: 0px;
+}
+
+.header__content {
+  justify-self: center;
+  align-self: center;
+  width: 100%;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (width > 576px) {
+  .header__content {
+    justify-self: right;
+  }
+
+  .header__title {
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+
+  .header .header__content {
+    width: 50vw;
+  }
+}
+
+.main {
+  max-height: 5354px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: grid;
+  gap: 10vw;
+}
+
+.section {
+  display: grid;
+  gap: 30px;
+}
+
+.section__title {
+  font-family: 'IBM Plex Mono';
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--section__title-color);
+}
+
+@media (width > 576px) {
+  .section:nth-child(odd) {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .section:nth-child(even) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section:nth-child(even) .header__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: inherit;
+  }
+}
+
+.article {
+  font-family: 'IBM Plex Mono';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23.4px;
+  letter-spacing: 0%;
+  color: var(--text-color);
+}
+
+.article_title {
+  font-family: 'IBM Plex Mono';
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 23.4px;
+  letter-spacing: 0%;
+  background-color: var(--accent-color);
+  color: var(--title-text-color);
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 0 var(--accent-color);
+  text-decoration: none;
+}
+
+.text-shadow:hover {
+  border-bottom: 1px solid var(--text-color);
+}
+
+.text-shadow:focus {
+  outline: none;
+}
+
+.text-shadow:focus-visible {
+  border: 1px solid var(--text-color);
+}
+
+.article_sub-title {
+  font-family: 'IBM Plex Mono';
+  font-weight: 400;
+  font-size: 18px;
+  background-color: var(--accent-color);
+  color: var(--title-text-color);
+  padding: 10px 20px;
+  padding: 0px;
+}
+
+.header__content div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gallery {
+  display: grid;
+  min-width: 355px;
+  gap: 10px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.picture {
+  display: grid;
+  gap: 10px;
+}
+
+@media (width > 576px) {
+  .picture {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  .picture--1 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+
+  .picture--2 {
+    grid-column-start: 3;
+    grid-column-end: auto;
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
+
+  .picture--3 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 4;
+  }
+
+  .picture--5 {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 3;
+  }
+}
+
+.footer {
+  height: 100vh;
+  min-height: 668px;
+  display: flex;
+  justify-content: center;
 }
