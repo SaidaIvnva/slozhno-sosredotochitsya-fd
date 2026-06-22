@@ -138,6 +138,10 @@
 }
 
 @media (width >= 768px) and (width < 1024px) {
+  .header {
+    margin-bottom: 40px;
+  }
+
   .decorated-zone::before {
     top: 20px;
   }
@@ -165,7 +169,7 @@
   .header {
     padding-right: 20px;
     padding-top: 20px;
-    padding-left: 0px;
+    padding-left: 30px;
     margin-bottom: 40px;
   }
 
@@ -198,6 +202,7 @@
     justify-content: start;
     align-items: center;
     font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+    margin-left: -30px !important;
   }
 
   .header .header__content {
