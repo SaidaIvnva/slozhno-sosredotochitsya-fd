@@ -1,7 +1,7 @@
 :root.theme-dark {
   --bg-image: url(../images/cover-image-dark.png);
   --bg-color: #000020;
-  --text-color: #f1f1f1;
+  --text-color: #F1B2CE;
   --accent-color: #FF0070;
   --title-color: #DB00FF;
   --decor-color: #ff0077;
@@ -16,7 +16,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not(.theme-light) {
+  :root {
     --bg-image: url(../images/cover-image-dark.png);
     --bg-color: #000020;
     --text-color: #f1f1f1;
